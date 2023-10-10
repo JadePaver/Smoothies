@@ -1,0 +1,180 @@
+.navbar {
+    background-color: #FEE996;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    display: flex;
+    align-items: left;
+    width: 4rem;
+    height: 80vh;
+    justify-content: space-between;
+    transition: all .4s ease-in-out;
+    border-radius: 15px;
+    position: fixed;
+    z-index: 1;
+    left: 1px;
+    top: 6rem;
+    overflow: hidden;
+    /* margin: 5vh 0; */
+
+}
+
+.navbar:hover {
+    background-color: #FEE996;
+
+    width: 200px;
+
+}
+
+.navbar:hover a {
+    width: 110%;
+    cursor: pointer;
+    color: black;
+    font-size: 1rem;
+    transition: font-size .01s ease-in-out;
+}
+
+.navbar img {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-left: 0 50%;
+    padding: 0 1rem;
+}
+
+.navbar .links a:hover {
+    background-color: #ccc;
+    border-radius: 1rem 0 0 1rem ;
+    color: white;
+    transition: all .1s ease-in-out;
+}
+
+
+.navbar h1 {
+    color: black;
+}
+
+.navbar .links {
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+}
+
+.navbar a {
+    display: flex;
+    font-size: 0px;
+    text-decoration: none;
+    margin: 0;
+    padding: .3rem 0;
+    color: transparent;
+    transition: all .01s ease-in-out;
+}
+
+.btn-login:hover {
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    cursor: pointer;
+    border-radius: 2rem;
+    background-color: #FEE996;
+    transition: ease-in-out .3s;
+}
+
+.content-input {
+    min-height: 5rem;
+}
+
+.sugar-select {
+    border-radius: 2rem;
+    margin-top: 0.25rem;
+    height: 2rem;
+    width: 62%;
+    font-family: 'Quicksand', sans-serif;
+    color: #444;
+}
+
+.add-recipe-form {
+    background-color: rgb(245, 237, 231);
+}
+
+.btn-add-recipe {
+    border: solid 2px #ccc;
+    border-radius: 36px;
+    background: #fffaf5;
+    transition: all ease-in-out .4s;
+}
+
+.btn-add-recipe:hover {
+    transition: all ease-in-out .4s;
+    scale: 105%;
+    border: solid 2px #ffffff;
+    color: #ffffff;
+    background: #ffe374;
+}
+
+.card-container {
+    background-color: rgb(245, 237, 231);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: solid #ccc 1px;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: .5rem;
+    height: 30%;
+    width: 30%;
+    min-width: 15rem;
+    min-height: 10rem;
+    overflow: hidden;
+    transition: all ease-in-out .4s;
+}
+.card-container:hover{
+    scale: 110%;
+    background-color: #fff5cd;
+    transition: all ease-in-out .3s;
+}
+
+.btn-addRecipe {
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    color: #444;
+    background-color: #FEE996;
+    border: 2px solid #ccc;
+    border-radius: 10rem;
+    padding: .5rem 1rem;
+}
+
+.btn-fancy {
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    color: #444;
+    border-radius: 10rem;
+    padding: .5rem .5rem;
+    margin: 0 .25rem;
+}
+
+.btn-del-cancel {
+    display: none;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-del-confirm {
+    color: rgb(255, 255, 255);
+    background-color: #FEE996;
+    display: none;
+    border: none;
+}
+
+.delete-button {
+    display: flex;
+    background-color: transparent;
+}
+
+.icon-home {
+    fill: blue;
+    width: 100px;
+    height: 100px;
+    transition: fill 0.3s;
+}

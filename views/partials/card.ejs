@@ -1,0 +1,84 @@
+<div class="">
+    <% let cardCounter = 0; %>
+    <% recipes.forEach((recipe) => { %>
+    <% if (cardCounter % 3 === 0) { %>
+        <div class="row space-between">
+    <% } %>
+        <div class="card-container">
+            <h1 class="recipe-name"><%= recipe.itemName %></h1>
+            <p class="recipe-content"><%= recipe.itemContent %></p>
+            <h5 class="recipe-sugar">Sugar: <%= recipe.sugar %></h5>
+            <div class="options-row">
+                <button class="btn-fancy delete-button"> <img src="/images/close_icon.svg" class="img1" alt="close"style="height: 1rem; width: 1rem; scale: 125%;"></button>
+                <button class="btn-fancy btn-del-confirm" data-recipeid="<%= recipe._id %>">confirm</button>
+                <button class="btn-fancy btn-del-cancel">cancel</button>
+            </div>
+        </div>
+            <% cardCounter++; %>
+            <% if (cardCounter % 3 === 0) { %>
+            </div>
+            <% } %>
+        <% }); %>
+
+            <script>
+                const img = document.querySelector('.img1');
+                const deleteButton = document.querySelectorAll('.delete-button');
+                const deleteConfirm = document.querySelectorAll('.btn-del-confirm');
+                const deleteCancel = document.querySelectorAll('.btn-del-cancel');
+
+                
+
+                deleteConfirm.forEach((button) => {
+                    button.addEventListener('click', deleteRecipe);
+                });
+                deleteCancel.forEach((button, index) => {
+                    button.addEventListener('click', (event => {
+                        event.preventDefault();
+                        closeOptions(index);
+                    }));
+                });
+
+                deleteButton.forEach((button, index) => {
+                    button.addEventListener('click', (event => {
+                        event.preventDefault();
+                        console.log(img.src);
+                        openOptions(index);
+                    }));
+                });
+
+                function openOptions(index) {
+                    
+                    deleteConfirm[index].style.display = 'flex';
+                    deleteCancel[index].style.display = 'flex';
+                    deleteButton[index].style.display = 'none';
+
+                };
+                function closeOptions(index) {
+                    deleteConfirm[index].style.display = 'none';
+                    deleteCancel[index].style.display = 'none';
+                    deleteButton[index].style.display = 'flex';
+                };
+
+                async function deleteRecipe(event) {
+                    const button = event.target;
+                    const recipeId = button.getAttribute('data-recipeid');
+                    console.log(recipeId)
+                    try {
+                        // Send a request to your server to delete the recipe by ID
+                        const response = await fetch(`/deleteRecipe/${recipeId}`, {
+                            method: 'DELETE',
+                        });
+
+                        if (response.ok) {
+                            // If the delete request was successful, remove the card from the DOM
+                            const cardContainer = button.closest('.card-container');
+                            cardContainer.remove();
+                        } else {
+                            console.error('Failed to delete the recipe.');
+                        }
+                    } catch (error) {
+                        console.error('An error occurred:', error);
+                    }
+                }
+            </script>
+</div>

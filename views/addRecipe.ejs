@@ -1,0 +1,81 @@
+<%- include('partials/header'); -%>
+<%- include('partials/sidebar'); -%>
+    <form action="/addRecipe" method="POST" class="add-recipe-form">
+        <h1 class="middle center padding-b-3rem">Add your recipe</h1>
+        <span class="row middle center">
+            <label class="label-recipe">Name:</label>
+            <input type="text" name="itemName">
+            <div class="itemName error"></div>
+        </span>
+        <span class="row middle padding-v">
+            <label class="label-recipe">Content:</label>
+        </span>
+        <span class="row middle center ">
+            <input class="content-input" type="text" name="itemContent">
+            <div class="content error"></div>
+        </span>
+        <span class="row middle  padding-v">
+            <label class="label-recipe">Sugar Level:</label>
+            <select name="sugar" id="sugar-input" class="sugar-select">
+                <option value="0">Select Sugar Level</option>
+                <option value="25">25%</option>
+                <option value="50">50%</option>
+                <option value="100">100%</option>
+            </select>
+            <div class="sugar error"></div>
+        </span>
+        <span class="middle center padding-v">
+            <button class="btn-add-recipe">Add Item</button>
+        </span>
+    </form>
+    <!-- <script>
+        const form1 = document.querySelector('.add-recipe-form');
+        const itemName = document.querySelector('itemName')
+        const itemContent = document.querySelector('itemContent')
+        const sugar = document.querySelector('sugar')
+
+        const nameError = document.querySelector('.itemName.error')
+        const contentError = document.querySelector('.content.error')
+        const sugarError = document.querySelector('.sugar.error')
+    
+        form1.addEventListener('submit', async(e) =>{
+            e.preventDefault();
+            
+            //reset err
+            nameError.textContent ='';
+            contentError.textContent ='';
+            sugarError.textContent ='';
+                
+            //get val
+            const name = form1.itemName.value;
+            const content = form1.itemContent.value;
+            const sugar =form1.sugar.value
+            console.log(name,content,sugar);
+            try{
+                const res = await fetch('/addRecipe', {
+                    method: 'POST',
+                    body: JSON.stringify({ name, content,sugar }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await res.json();
+                console.log(data);
+                // if (data.errors) {
+                //     emailError.textContent = data.errors.email;
+                //     passwordError.textContent = data.errors.password;
+                // }
+                if(data.errors){
+                    nameError.textContent = data.errors.name;
+                    contentError.textContent = data.errors.content;
+                    sugarError.textContent = data.errors.sugar;
+                }
+                if (data.itemName){
+                    res.redirect('/');
+                }
+            }
+            catch(err){
+                console.log(err)
+            }
+        })
+    </script> -->
+    
+    <%- include('partials/footer'); -%>
