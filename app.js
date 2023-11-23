@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
-
+require("dotenv").config();
 
 const app = express();
 
@@ -15,8 +15,7 @@ app.use(cookieParser());
 app.set('view engine', 'ejs')
 
 //database connection
-const dbURI = 'mongodb+srv://zakkur:dramaticals@cluster0.2f4974g.mongodb.net/node-auth'
-mongoose.connect(dbURI, {
+mongoose.connect(process.env.dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
